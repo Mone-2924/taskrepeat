@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'create_task' %}">Создать проект</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <h1 class="mt-3">Проекты</h1>
+    <div class="d-flex flex-wrap  justify-content-around ">
+        {% for project in projects %}
+            <div class="card col-12 col-md-6 col-lg-5 mb-3">
+                <div class="card-body">
+                    <p class="card-text"> {{ project.description }}</p>
+                    <a class="btn btn-primary bg-dark text-white" style="border-color: transparent"
+                       href="{% url 'task_view' pk=project.pk %}">Подробнее</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
